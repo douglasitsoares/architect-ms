@@ -16,7 +16,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 	// On Postman to put information of credentials 
 	private static final String [] PUBLIC = {"/hr-oauth/oauth/token"};
 	private static final String [] OPERATOR = {"/hr-worker/**"};
-	private static final String [] ADMIN = {"/hr-payroll/**","/hr-user/**" };
+	private static final String [] ADMIN = {"/hr-payroll/**","/hr-user/**","/actuator/**","/hr-worker/actuator/**","/hr-oauth/actuator/**"};
+	
 	
 	@Autowired
 	private JwtTokenStore tokenStore;
@@ -30,11 +31,10 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 	public void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 		.antMatchers(PUBLIC).permitAll()
-		.antMatchers(HttpMethod.GET, OPERATOR).hasAnyRole("OPERATOR","ADMIN")
+		//For both can see the same role of Operator
+		.antMatchers(HttpMethod.GET, OPERATOR).hasAnyRole("ADMIN","OPERATOR","USER")
 		.antMatchers(ADMIN).hasRole("ADMIN")
 		.anyRequest().authenticated();		
 	}
-
-	
 	
 }
