@@ -1,11 +1,17 @@
-package com.architectms.hroauth.entities;
+package com.architectms.hruser.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Id;
+
+import org.springframework.data.mongodb.core.mapping.Document;
+
+
+@Document(collection = "tb_role") //Also could be just @Document
 public class Role implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-
+	@Id
 	private String id;
 	private String roleName;
 	

@@ -25,7 +25,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 	// On Postman to put information of credentials 
 	private static final String [] PUBLIC = {"/hr-oauth/oauth/token"};
 	private static final String [] OPERATOR = {"/hr-worker/**"};
-	private static final String [] ADMIN = {"/hr-payroll/**","/hr-user/**","/actuator/**","/hr-worker/actuator/**","/hr-oauth/actuator/**"};
+	private static final String [] ADMIN = {"/hr-payroll/**","/hr-user_mongo/**","/actuator/**","/hr-worker/actuator/**","/hr-oauth/actuator/**"};
 	
 	
 	@Autowired

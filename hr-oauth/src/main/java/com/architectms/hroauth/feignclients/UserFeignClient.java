@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.architectms.hroauth.entities.User;
 
 @Component
-@FeignClient (name="hr-user", path="/users")
+@FeignClient (name="hr-user-mongo", path="/users")
 public interface UserFeignClient {
 
 	
